@@ -19,6 +19,12 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
+        android:id="@+id/navigation_shop"
+        android:name="com.example.hamariapp.ui.shop.ShopFragment"
+        android:label="@string/title_shop"
+        tools:layout="@layout/fragment_shop" />
+
+    <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.hamariapp.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
