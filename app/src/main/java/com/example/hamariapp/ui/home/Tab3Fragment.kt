@@ -16,7 +16,7 @@ class Tab3Fragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_tab3, container, false)
 
         val textView: TextView = rootView.findViewById(R.id.textView3)
-        textView.text = "This is Tab 3"
+        textView.text = "Select a chapter"
 
         return rootView
     }

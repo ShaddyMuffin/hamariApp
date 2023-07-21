@@ -100,6 +100,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        val i = Intent(this,Second::class.java)
+        startActivity(i)
+    }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
