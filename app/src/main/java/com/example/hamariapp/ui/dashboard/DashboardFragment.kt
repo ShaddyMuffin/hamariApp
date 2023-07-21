@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.hamariapp.R
@@ -16,8 +17,11 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        val button: Button = rootView.findViewById(R.id.con_button)
 
-        showDialog()
+        button.setOnClickListener {
+            showDialog()
+        }
 
 
         return rootView
@@ -26,7 +30,7 @@ class DashboardFragment : Fragment() {
     private fun showDialog() {
         val builder = AlertDialog.Builder(requireContext())
 
-        builder.setMessage("Do you want to proceed with this action?")
+        builder.setMessage("Do you want to make a soul smil'u'?")
             .setPositiveButton("Yes") { _: DialogInterface, _: Int ->
                 // Code to execute when "Yes" button is clicked
                 // Add your logic here

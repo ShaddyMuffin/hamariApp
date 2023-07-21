@@ -7,36 +7,32 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
+import com.example.hamariapp.R
 import com.example.hamariapp.databinding.FragmentHomeBinding
+import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+    ): View? {
+        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Initialize the ViewPager and TabLayout
+        val viewPager: ViewPager = rootView.findViewById(R.id.viewPager)
+        val tabLayout: TabLayout = rootView.findViewById(R.id.tabLayout)
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
-    }
+        // Create the adapter for the ViewPager (you need to implement it)
+        val adapter = MyPagerAdapter(childFragmentManager)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        // Set the adapter for the ViewPager
+        viewPager.adapter = adapter
+
+        // Connect the TabLayout with the ViewPager
+        tabLayout.setupWithViewPager(viewPager)
+
+        return rootView
     }
 }
